@@ -38,16 +38,16 @@
 
                         <x-slot name="content">
 
+                            <x-dropdown-link :href="route('member.index')">
+                                {{ __('Member') }}
+                            </x-dropdown-link>
+
                             <x-dropdown-link :href="route('outlet.index')">
                                 {{ __('Outlet') }}
                             </x-dropdown-link>
 
                             <x-dropdown-link :href="route('paket.index')">
                                 {{ __('Paket') }}
-                            </x-dropdown-link>
-
-                            <x-dropdown-link :href="route('member.index')">
-                                {{ __('Member') }}
                             </x-dropdown-link>
 
                         </x-slot>
@@ -75,11 +75,11 @@
 
                         <x-slot name="content">
                             
-                            <x-dropdown-link :href="route('transaksi.index')">
+                            <x-dropdown-link :href="route('dashboard')">
                                 {{ __('Transaksi') }}
                             </x-dropdown-link>
 
-                            <x-dropdown-link :href="route('detailTransaksi.index')">
+                            <x-dropdown-link :href="route('dashboard')">
                                 {{ __('Detail Transaksi') }}
                             </x-dropdown-link>
 

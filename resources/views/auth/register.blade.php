@@ -16,6 +16,32 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        {{-- eta lain?? --}}
+
+
+
+        <!-- Name -->
+        <div>
+            <x-input-label for="id_outlet" :value="__('id_outlet')" />
+            <x-text-input id="id_outlet" class="block mt-1 w-full" type="text" name="id_outlet" :value="old('id_outlet')" autofocus autocomplete="id_outlet" />
+            <x-input-error :messages="$errors->get('is_outlet')" class="mt-2" />
+        </div>
+
+        <!-- Name -->
+        <div>
+            <x-input-label for="role" :value="__('Role')" />
+            <select id="role" class="block mt-1 w-full" name="role" required autofocus>
+                <option value="">Pilih Role</option>
+                <option value="admin">Admin</option>
+                <option value="kasir">Kasir</option>
+                <option value="owner">Owner</option>
+            </select>
+            <x-input-error :messages="$errors->get('role')" class="mt-2" />
+        </div>
+        
+
+        {{-- terus --}}
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
@@ -38,6 +64,9 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+
+
+        {{-- terus?? --}}
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
