@@ -20,10 +20,15 @@
                         <form action="{{ route('paket.store') }}" method="post">
                             @csrf
                             <div class="mb-5">
-                                <label for="base-input"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID Paket</label>
-                                <input name="id_paket" type="text" id="base-input"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <label for="id_outlet"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Id Outlet</label>
+                                <select class="js-example-placeholder-single js-states form-control w-full m-6"
+                                    name="id_outlet" data-placeholder="Pilih Konsinyasi">
+                                    <option value="">Pilih...</option>
+                                    @foreach ($outlet as $o)
+                                        <option value="{{ $o->id }}">{{ $o->nama }}</option>                                        
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="mb-5">
                                 <label for="base-input"
@@ -58,7 +63,7 @@
                                             NO
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            PAKET
+                                            OUTLET
                                         </th>
                                         <th scope="col" class="px-6 py-3">
                                             JENIS
@@ -83,7 +88,7 @@
                                                 {{ $paket->perPage() * ($paket->currentPage() - 1) + $key + 1 }}
                                             </th>
                                             <td class="px-6 py-4">
-                                                {{ $k->id_paket }}
+                                                {{ $k->outlet->nama }}
                                             </td>
                                             <td class="px-6 py-4">
                                                 {{ $k->jenis }}
@@ -94,7 +99,7 @@
                                             <td class="px-6 py-4">
                                                 <button type="button" data-id="{{ $k->id }}"
                                                     data-modal-target="sourceModal"
-                                                    data-id_paket="{{ $k->id_paket }}" data-jenis="{{ $k->jenis }}"
+                                                    data-id_outlet="{{ $k->id_outlet }}" data-jenis="{{ $k->jenis }}"
                                                     data-nama_paket="{{ $k->nama_paket }}" onclick="editSourceModal(this)"
                                                     class="bg-amber-500 hover:bg-amber-600 px-3 py-1 rounded-md text-xs text-white">
                                                     Edit
@@ -133,11 +138,16 @@
                 <form method="POST" id="formSourceModal">
                     @csrf
                     <div class="flex flex-col  p-4 space-y-6">
-                        <div class="">
-                            <label for="text" class="block mb-2 text-sm font-medium text-gray-900">ID Paker</label>
-                            <input type="text" id="id_paket" name="id_paket"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Masukan kelas disini...">
+                    <div class="">
+                            <label for="id_outlet_edit"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Outlet</label>
+                            <select class="js-example-placeholder-single js-states form-control w-full m-6"
+                                name="id_outlet_edit" id="id_outlet" data-placeholder="Pilih Outlet">
+                                <option value="">Pilih...</option>
+                                @foreach ($outlet as $o)
+                                    <option value="{{ $o->id }}">{{ $o->nama }}</option>                                        
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mb-5">
                             <label for="base-input"
@@ -174,15 +184,15 @@
         const formModal = document.getElementById('formSourceModal');
         const modalTarget = button.dataset.modalTarget;
         const id = button.dataset.id;
-        const id_paket = button.dataset.id_paket;
+        const id_outlet = button.dataset.id_outlet;
         const jenis = button.dataset.jenis;
         const nama_paket = button.dataset.nama_paket;
         let url = "{{ route('paket.update', ':id') }}".replace(':id', id);
 
         let status = document.getElementById(modalTarget);
-        document.getElementById('title_source').innerText = `UPDATE PAKET ${id_paket}`;
+        document.getElementById('title_source').innerText = `UPDATE PAKET ${id_outlet}`;
 
-        document.getElementById('id_paket').value = id_paket;
+        document.getElementById('id_outlet').value = id_outlet;
         document.getElementById('jenis').value = jenis;
         document.getElementById('nama_paket').value = nama_paket;
 

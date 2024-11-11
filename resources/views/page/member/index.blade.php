@@ -97,7 +97,6 @@
                     </button>
                 </div>
                 <form method="POST" id="formSourceModal">
-                    @csrf
                     <div class="flex flex-col p-4 space-y-6">
                         <div class="mb-5">
                             <label for="base-input"
@@ -114,11 +113,9 @@
                         <div class="mb-5">
                             <label for="jenis_kelamin"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
-                            <select class="js-example-placeholder-single js-states form-control w-full m-6"
-                                name="jenis_kelamin" data-placeholder="Pilih Jenis Kelamin">
-                                <option value="">Pilih...</option>
-                                <option value="Perempuan">P</option>
-                                <option value="Laki-Laki">L</option>
+                            <select name="jenis_kelamin" id="jenis_kelamin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="L">Laki-Laki</option>
+                                <option value="P">Perempuan</option>
                             </select>
                         </div>
                     </div>
@@ -147,7 +144,6 @@
                     </button>
                 </div>
                 <form method="POST" id="formSourceModalEdit">
-                    @csr
                         <div class="flex flex-col p-4 space-y-6">
                             <div class="">
                                 <label for="text"

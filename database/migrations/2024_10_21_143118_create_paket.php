@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('paket', function (Blueprint $table) {
             $table->id();
-            $table->string('id_paket');
+            $table->foreignId('id_outlet')->constrained('outlet')->onDelete('cascade');
             $table->string('jenis');
             $table->string('nama_paket');
             $table->timestamps();

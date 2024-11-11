@@ -7,10 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class paket extends Model
 {
     protected $fillable = [
-        'id_paket',
+        'id_outlet',
         'jenis',
         'nama_paket'
     ];
 
     protected $table = 'paket';
+
+    public function outlet(){
+        return $this->belongsTo(Outlet::class, 'id_outlet', 'id');
+    }
 }
